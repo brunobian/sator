@@ -13,6 +13,7 @@ df = pd.read_csv('./TodasPals.csv')
 Palabras = df.Palabra.tolist()
 df = pd.read_csv('subtitles_sa_constraints_out.csv',sep="\t")
 Palabras += df.word.tolist()
+# Si se siguen adicionando palabras a esta lista todo debería seguir funcionando bien
 Palabras = list(set(Palabras))
 
 # dejo solo las que son de 5 letras y su reverso significa algo
