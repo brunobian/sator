@@ -1,6 +1,11 @@
 import pandas as pd 
 
 def largoYreverso(x,Palabras):
+    x=x.replace('á','a')
+    x=x.replace('é','e')
+    x=x.replace('í','i')
+    x=x.replace('ó','o')
+    x=x.replace('ú','u')
     return (len(x)==5) and (x[::-1] in Palabras)
 
 # cargo dos diccionarios y los junto
@@ -8,6 +13,7 @@ df = pd.read_csv('./TodasPals.csv')
 Palabras = df.Palabra.tolist()
 df = pd.read_csv('subtitles_sa_constraints_out.csv',sep="\t")
 Palabras += df.word.tolist()
+Palabras = list(set(Palabras))
 
 # dejo solo las que son de 5 letras y su reverso significa algo
 pals5 = [x for x in Palabras if (largoYreverso(x,Palabras)) ] 
